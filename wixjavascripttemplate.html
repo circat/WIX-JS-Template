@@ -18,11 +18,11 @@
     <script>
 
     var yoff = 0.0;        // 2nd dimension of perlin noise
-var ball = 2;
-var r = 0;
-var g = 0;
-var b = 0;
-var a = 0;
+    var ball = 2;
+    var r = 0;
+    var g = 0;
+    var b = 0;
+    var a = 0;
 
     function setup() {
       background(255,255);
@@ -34,8 +34,6 @@ var a = 0;
 
     function draw() {
       background(255, 30);
-
-
 
       if (mouseIsPressed){
         var r = random(255);
@@ -52,46 +50,25 @@ ball = noise(1,8);
         else {
           var xoff = 5;
           stroke(r,g,b,a);
-          //stroke(1+ mouseX / 10, 1+ mouseX / 10 - mouseY, 1+ mouseY-10,80);
+         
         }
-
-
-
-      // We are going to draw a polygon out of the wave points
-      //beginShape();
-
-    //  var xoff = 0;       // Option #1: 2D Noise
-      //var xoff = yoff; // Option #2: 1D Noise
-
-      // Iterate over horizontal pixels
+      
       for (var x = 0; x <= width; x += 5) {
-        // Calculate a y value according to noise, map to
-var size = 70+mouseY/5;
+
+        var size = 70+mouseY/5;
 
 
         // Option #1: 2D Noise
         var y = map(noise(xoff, yoff), 0, 1, 2,size);
 
-        // Option #2: 1D Noise
-         //var y = map(noise(xoff), 0, 1, 200,300);
-
-        // Set the vertex
         vertex(x, y);
-
-
-
         ellipse(x,y,ball,ball);
-        // Increment x dimension for noise
         xoff += 0.02;
       }
-      // increment y dimension for noise
       yoff += 0.0085;
       pop();
-
       vertex(width, height);
       vertex(0, height);
-
-     //endShape(CLOSE);
     }
 
 

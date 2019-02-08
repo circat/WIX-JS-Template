@@ -1,6 +1,7 @@
 # Javascript for WIX pages
 
-    A template for adding javascript code, animations or else to your WIX page.took me soe time to figure it out,so i think its useful for others.
+    A template for adding javascript code, animations or else to your WIX page.
+    took me some time to figure it out, so i think its useful for others.
 
 ## Installation
 

@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.sound.min.js"></script>
+
+    <style type="text/css">
+  *{  margin: 0;
+ padding: 0;
+}
+ </style>
+
+  </head>
+  <body>
+    <body style="overflow:hidden;">
+
+    <script>
+
+    var yoff = 0.0;        // 2nd dimension of perlin noise
+var ball = 2;
+var r = 0;
+var g = 0;
+var b = 0;
+var a = 0;
+
+    function setup() {
+      background(255,255);
+      smooth();
+      createCanvas(2200, 200);
+      frameRate(30);
+      pixelDensity(1);
+    }
+
+    function draw() {
+      background(255, 30);
+
+
+
+      if (mouseIsPressed){
+        var r = random(255);
+        var g = random(255);
+        var b = random(255);
+        var a = random(255);
+          //fill(random(255), random(255), random(255), random(100));
+          stroke(r,g,b,a);
+        //var y = map(noise(xoff), 0, 1, 200,300);
+yoff = noise(30,255);
+ball = noise(1,8);
+        var xoff = yoff;
+        }
+        else {
+          var xoff = 5;
+          stroke(r,g,b,a);
+          //stroke(1+ mouseX / 10, 1+ mouseX / 10 - mouseY, 1+ mouseY-10,80);
+        }
+
+
+
+      // We are going to draw a polygon out of the wave points
+      //beginShape();
+
+    //  var xoff = 0;       // Option #1: 2D Noise
+      //var xoff = yoff; // Option #2: 1D Noise
+
+      // Iterate over horizontal pixels
+      for (var x = 0; x <= width; x += 5) {
+        // Calculate a y value according to noise, map to
+var size = 70+mouseY/5;
+
+
+        // Option #1: 2D Noise
+        var y = map(noise(xoff, yoff), 0, 1, 2,size);
+
+        // Option #2: 1D Noise
+         //var y = map(noise(xoff), 0, 1, 200,300);
+
+        // Set the vertex
+        vertex(x, y);
+
+
+
+        ellipse(x,y,ball,ball);
+        // Increment x dimension for noise
+        xoff += 0.02;
+      }
+      // increment y dimension for noise
+      yoff += 0.0085;
+      pop();
+
+      vertex(width, height);
+      vertex(0, height);
+
+     //endShape(CLOSE);
+    }
+
+
+
+       </script>
+  </body>
+</html>
